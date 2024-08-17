@@ -35,6 +35,12 @@ add_executable(Qt_Lunch_Lottery main.cpp
         ${HEADER_FILES}
         ${SRC_FILES}
         ${UI_FILES}
+        include/community.h
+        src/community.cpp
+
+
+
+
 )
 target_link_libraries(Qt_Lunch_Lottery
         Qt::Core
