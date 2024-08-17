@@ -1,10 +1,11 @@
 #include <QApplication>
-#include <QPushButton>
+#include "mainwidget.h"
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    QPushButton button("VEDA Lunch Lottery", nullptr);
-    button.resize(200, 100);
-    button.show();
+
+    MainWidget program;
+    program.show();
+
     return QApplication::exec();
 }
