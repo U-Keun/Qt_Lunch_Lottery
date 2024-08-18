@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+class ImageWidget;
+
 namespace Ui {
 class MainWidget;
 }
@@ -17,6 +19,7 @@ public:
 
 private:
     Ui::MainWidget *ui;
+    ImageWidget *cat;
 };
 
 #endif // MAINWIDGET_H
