@@ -16,11 +16,13 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 set(HEADER_FILES
         include/mainwidget.h
         include/imagewidget.h
+        include/community.h
 )
 
 set(SRC_FILES
         src/mainwidget.cpp
         src/imagewidget.cpp
+        src/community.cpp
 )
 
 set(UI_FILES
@@ -33,12 +35,11 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(Qt_Lunch_Lottery main.cpp
+add_executable(Qt_Lunch_Lottery
+        main.cpp
         ${HEADER_FILES}
         ${SRC_FILES}
         ${UI_FILES}
-        include/community.h
-        src/community.cpp
         images.qrc
 )
 target_link_libraries(Qt_Lunch_Lottery
