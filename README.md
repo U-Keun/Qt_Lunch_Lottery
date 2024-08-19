@@ -1,6 +1,7 @@
 # Qt_Lunch_Lottery
 
 # VEDA_Lunch_Lottery (랜밥 - 랜덤밥먹기)
+![cattest](https://github.com/user-attachments/assets/0b14efe6-b83f-441b-ac20-14ddd8efae32)
 
 VEDA_Lunch_Lottery는 그룹 내에서 무작위로 식사 조를 만들어주는 Qt 프로그램입니다. 
 
