@@ -10,6 +10,8 @@
 #include <QLabel>
 #include <QRegularExpression>
 #include <QMessageBox>
+#include <QIcon>
+#include <QTimer>
 
 #include <QFileDialog>
 #include <QTextStream>
@@ -85,6 +87,13 @@ MainWidget::MainWidget(QWidget *parent)
         }
         QClipboard* clipboard = QApplication::clipboard();
         clipboard->setText(copyStr);
+
+        QIcon defaultIcon(":/resource/copy-icon.svg");
+        QIcon newIcon(":/resource/check-icon.svg");
+        ui->copyButton->setIcon(newIcon);
+        QTimer::singleShot(2000, [=]() {
+            ui->copyButton->setIcon(defaultIcon);
+        });
     });
 
     connect(ui->generateGroupButton, &QPushButton::clicked, this, [=]() {
@@ -106,10 +115,11 @@ MainWidget::MainWidget(QWidget *parent)
         updateCommunity();
     });
 
-    cat = new ImageWidget(this);
+    cat = new ImageWidget(ui->inputWidget);
     cat->setGeometry(10, 450, 400, 200);
-
-
+    ui->inputWidget->raise();
+    cat->raise();
+    ui->generateGroupButton->raise();
 }
 
 MainWidget::~MainWidget()
