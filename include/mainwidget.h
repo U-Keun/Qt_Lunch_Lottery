@@ -20,13 +20,9 @@ public:
     explicit MainWidget(QWidget *parent = nullptr);
     ~MainWidget();
 
-protected:
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
-
 private:
     Ui::MainWidget *ui;
+    Community* community;
     int totalPeopleCount;
     int groupEntityCount;
     int groupCount;
@@ -37,6 +33,7 @@ private:
 
     void displayResult();
     void updateTotalPeopleCount();
+    void updateCommunity();
     QStringList getNames();
 };
 

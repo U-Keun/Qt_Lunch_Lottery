@@ -1,6 +1,6 @@
 #include "mainwidget.h"
 #include "ui_mainwidget.h"
-// #include "community.h"
+#include "community.h"
 
 #include <fstream>
 
@@ -15,12 +15,6 @@
 #include <QStringList>
 #include <QClipboard>
 
-#include <QMouseEvent>
-#include <QPaintEvent>
-#include <QPainterPath>
-#include <QRegion>
-#include <QPainter>
-
 #include <vector>
 #include <string>
 
@@ -31,9 +25,7 @@ MainWidget::MainWidget(QWidget *parent)
     , ui(new Ui::MainWidget), m_isDragging(false)
 {
     ui->setupUi(this);
-    // 프레임 없애기
-    // setWindowFlag(Qt::FramelessWindowHint);
-
+    community = new Community();
     connect(ui->chooseFileButton, &QPushButton::clicked, this, [=]() {
         QString fileName = QFileDialog::getOpenFileName(this,
                                                         tr("학생 데이터 파일 선택"), "",
@@ -95,53 +87,22 @@ MainWidget::MainWidget(QWidget *parent)
     });
 
     connect(ui->generateGroupButton, &QPushButton::clicked, this, [=]() {
-        // 그룹 수 입력이 있는지 확인
-        QString groupCountTemp = ui->groupCountLineEdit->text();
-        if (groupCountTemp == "") {
-            // 안내 창 띄우기
-            QMessageBox::warning(this, "경고", "그룹 수를 입력해주세요.");
-            return;
-        }
-        // textEdit에서 데이터 받아와 students 배열 초기화?
         QStringList names = getNames();
-        totalPeopleCount = names.size();
-        groupCount = ui->groupCountLineEdit->text().toInt();
-        if (groupCount == 0) {
-            QMessageBox::warning(this, "경고", "그룹 수는 1이상 입니다.");
-            return;
-        }
-        groupEntityCount = ((totalPeopleCount - 1) / groupCount) + 1;
-        vector<string> students;
-        for (int i = 0; i < names.size(); i++) {
-            students.push_back(names[i].toStdString());
-        }
-        for (int i = 0; i < groupCount * groupEntityCount - totalPeopleCount; i++) {
-            students.push_back("none");
-        }
-        qDebug() << groupCount << groupEntityCount;
-        for (int i = 0; i < students.size(); i++) {
-            qDebug() << students[i];
-        }
-        // community 클래스 초기화 및 셔플 결과 저장
-        // Community* community = new Community(students, groupCount, groupEntityCount);
-        // team = community->shuffle();
-        // delete community;
+        if (names.empty()) return;
+        community->shuffle();
+        team = community->getTeam();
 
         if (team.empty()) return;
-
-        QString str = tr("");
-        for (int j = 0; j < team[0].size(); j++) {
-            for (int i = 0; i < team.size(); i++) {
-                if (team[i][j] == "none") continue;
-                str += team[i][j] + "\n";
-            }
-        }
-        ui->groupEntryText->setText(str);
         displayResult();
+    });
+
+    connect(ui->groupCountLineEdit, &QLineEdit::textChanged, this, [=]() {
+        updateCommunity();
     });
 
     connect(ui->groupEntryText, &QTextEdit::textChanged, this, [=]() {
         updateTotalPeopleCount();
+        updateCommunity();
     });
 }
 
@@ -155,6 +116,34 @@ void MainWidget::updateTotalPeopleCount() {
     int nameCount = names.size();
     ui->totalPeopleCountLabel->setText(tr("총 인원: ") + QString::number(nameCount) + tr("명"));
     totalPeopleCount = nameCount;
+}
+
+void MainWidget::updateCommunity() {
+    QString groupCountTemp = ui->groupCountLineEdit->text();
+    if (groupCountTemp == "") {
+        // 안내 창 띄우기
+        QMessageBox::warning(this, "경고", "그룹 수를 입력해주세요.");
+        return;
+    }
+    QStringList names = getNames();
+    totalPeopleCount = names.size();
+    groupCount = ui->groupCountLineEdit->text().toInt();
+    if (groupCount == 0) {
+        QMessageBox::warning(this, "경고", "그룹 수는 1이상 입니다.");
+        return;
+    }
+    groupEntityCount = ((totalPeopleCount - 1) / groupCount) + 1;
+    vector<string> students;
+    for (int i = 0; i < names.size(); i++) {
+        students.push_back(names[i].toStdString());
+    }
+    for (int i = 0; i < groupCount * groupEntityCount - totalPeopleCount; i++) {
+        students.push_back("none");
+    }
+
+    community->setGroupCount(groupCount);
+    community->setGroupEntityCount(groupEntityCount);
+    community->setStudent(students);
 }
 
 void MainWidget::displayResult() {
@@ -192,26 +181,3 @@ QStringList MainWidget::getNames() {
     return names;
 }
 
-
-// 마우스로 창 이동
-void MainWidget::mousePressEvent(QMouseEvent *event) {
-    if (event->button() == Qt::LeftButton) {
-        m_isDragging = true;
-        m_dragStartPos = event->globalPosition().toPoint() - frameGeometry().topLeft();
-        event->accept();
-    }
-}
-
-void MainWidget::mouseMoveEvent(QMouseEvent *event) {
-    if (m_isDragging && (event->buttons() & Qt::LeftButton)) {
-        move(event->globalPosition().toPoint() - m_dragStartPos);
-        event->accept();
-    }
-}
-
-void MainWidget::mouseReleaseEvent(QMouseEvent *event) {
-    if (event->button() == Qt::LeftButton) {
-        m_isDragging = false;
-        event->accept();
-    }
-}
