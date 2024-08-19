@@ -4,5 +4,7 @@
         <file>resource/mouth.png</file>
         <file>resource/paw-left.png</file>
         <file>resource/paw-right.png</file>
+        <file>resource/copy-icon.svg</file>
+        <file>resource/check-icon.svg</file>
     </qresource>
 </RCC>
