@@ -1,20 +1,48 @@
 #include "community.h"
 
-Community::Community():Community(vector<string>(), 0, 0){}
-Community::Community(vector<string> student, int groupCount, int groupEntityCount):
-    student(student), groupCount(groupCount), groupEntityCount(groupEntityCount){
-    team = vector<vector<string>>(groupCount, vector<string>(groupEntityCount));
+Community::Community():Community(vector<string>(), 0, 0, 0){}
+Community::Community(vector<string> student, int groupCount, int groupEntityCount, int count):
+    student(student), groupCount(groupCount), groupEntityCount(groupEntityCount), count(0){
+    update();
+}
+Community::~Community(){}
+
+void Community::update(){
+    team.clear();
+    team.resize(groupCount, vector<string>(groupEntityCount));
+
     for (int j = 0; j < groupEntityCount; j++) {
         for (int i = 0; i < groupCount; i++) {
             team[i][j] = student[i + j*groupCount];
         }
     }
 }
-Community::~Community(){}
+
+void Community::setStudent(vector<string> s){
+    student = s;
+    update();
+}
+
+void Community::setGroupCount(int gc){
+    groupCount = gc;
+    update();
+}
+
+void Community::setGroupEntityCount(int gec){
+    groupEntityCount = gec;
+    update();
+}
+
+vector<string> Community::getStudent(){
+    return student;
+}
+
+vector<vector<string>> Community::getTeam(){
+    return team;
+}
 
 void Community::shuffle() {
     int mod = team.size();
-    int count = 0;
     vector<vector<string>> newTeam = team;
     for (int j = 0; j < team[0].size(); j++) {
         for (int i = 0; i < team.size(); i++) {
