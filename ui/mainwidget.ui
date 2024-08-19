@@ -12,11 +12,14 @@
   </property>
   <property name="font">
    <font>
-    <family>Arial</family>
+    <family>나눔고딕</family>
    </font>
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
    <property name="spacing">
@@ -60,7 +63,7 @@
         <widget class="QLabel" name="programNameLabel">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>나눔고딕</family>
            <pointsize>20</pointsize>
            <bold>true</bold>
           </font>
@@ -71,20 +74,20 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="groupEntryCountLabel">
+        <widget class="QLabel" name="groupCountLabel">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>나눔고딕</family>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>조 인원</string>
+          <string>그룹 수</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="groupEntryCountLineEdit">
+        <widget class="QLineEdit" name="groupCountLineEdit">
          <property name="maximumSize">
           <size>
            <width>196</width>
@@ -93,28 +96,18 @@
          </property>
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>나눔고딕</family>
            <pointsize>14</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="inputMask">
+          <string>00</string>
          </property>
          <property name="placeholderText">
-          <string>test</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QTextEdit" name="groupEntryText">
-         <property name="maximumSize">
-          <size>
-           <width>196</width>
-           <height>199</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>14</pointsize>
-          </font>
+          <string/>
          </property>
         </widget>
        </item>
@@ -128,7 +121,7 @@
          </property>
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>나눔고딕</family>
            <pointsize>14</pointsize>
           </font>
          </property>
@@ -138,22 +131,43 @@
         </widget>
        </item>
        <item>
+        <widget class="QTextEdit" name="groupEntryText">
+         <property name="maximumSize">
+          <size>
+           <width>196</width>
+           <height>199</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>나눔고딕</family>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="totalPeopleCountLabel">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>나눔고딕</family>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>총 인원 : -명</string>
+          <string>총 인원 : 0명</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLabel" name="catImageLabel">
+         <property name="font">
+          <font>
+           <family>나눔고딕</family>
+          </font>
+         </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -173,7 +187,7 @@
          </property>
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>나눔고딕</family>
            <pointsize>14</pointsize>
           </font>
          </property>
@@ -186,6 +200,9 @@
      </item>
      <item>
       <layout class="QVBoxLayout" name="outputLayout" stretch="0,0,1,0">
+       <property name="spacing">
+        <number>8</number>
+       </property>
        <property name="leftMargin">
         <number>20</number>
        </property>
@@ -202,7 +219,7 @@
         <widget class="QLabel" name="titleLabel">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>나눔고딕</family>
            <pointsize>20</pointsize>
            <bold>true</bold>
           </font>
@@ -218,7 +235,7 @@
           <widget class="QLabel" name="resultLabel">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>나눔고딕</family>
              <pointsize>16</pointsize>
              <bold>true</bold>
             </font>
@@ -232,18 +249,29 @@
           <widget class="QPushButton" name="copyButton">
            <property name="minimumSize">
             <size>
-             <width>20</width>
-             <height>20</height>
+             <width>36</width>
+             <height>36</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
+             <width>36</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>나눔고딕</family>
+            </font>
+           </property>
+           <property name="text">
+            <string>복사</string>
+           </property>
+           <property name="iconSize">
+            <size>
              <width>20</width>
              <height>20</height>
             </size>
-           </property>
-           <property name="text">
-            <string>PushButton</string>
            </property>
           </widget>
          </item>
@@ -251,7 +279,15 @@
        </item>
        <item>
         <widget class="QWidget" name="resultWidget" native="true">
+         <property name="font">
+          <font>
+           <family>나눔고딕</family>
+          </font>
+         </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
           <property name="leftMargin">
            <number>0</number>
           </property>
@@ -265,7 +301,87 @@
            <number>0</number>
           </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_3"/>
+           <widget class="QScrollArea" name="scrollArea">
+            <property name="frameShape">
+             <enum>QFrame::Shape::NoFrame</enum>
+            </property>
+            <property name="widgetResizable">
+             <bool>true</bool>
+            </property>
+            <widget class="QWidget" name="scrollAreaWidgetContents">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>542</width>
+               <height>443</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="frame">
+                <property name="frameShape">
+                 <enum>QFrame::Shape::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Plain</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_3">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -286,7 +402,7 @@
          </property>
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>나눔고딕</family>
            <pointsize>14</pointsize>
           </font>
          </property>
