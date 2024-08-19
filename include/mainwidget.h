@@ -2,11 +2,13 @@
 #define MAINWIDGET_H
 
 #include <QWidget>
-
 #include <vector>
 #include <string>
 
 using namespace std;
+
+class ImageWidget;
+
 
 namespace Ui {
 class MainWidget;
@@ -35,6 +37,9 @@ private:
     void updateTotalPeopleCount();
     void updateCommunity();
     QStringList getNames();
+
+    ImageWidget *cat;
+
 };
 
 #endif // MAINWIDGET_H

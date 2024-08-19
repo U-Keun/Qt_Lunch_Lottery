@@ -1,4 +1,5 @@
 #include "mainwidget.h"
+#include "imagewidget.h"
 #include "ui_mainwidget.h"
 #include "community.h"
 
@@ -104,6 +105,11 @@ MainWidget::MainWidget(QWidget *parent)
         updateTotalPeopleCount();
         updateCommunity();
     });
+
+    cat = new ImageWidget(this);
+    cat->setGeometry(10, 450, 400, 200);
+
+
 }
 
 MainWidget::~MainWidget()
