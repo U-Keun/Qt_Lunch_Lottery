@@ -18,19 +18,17 @@ void Community::update(){
     }
 }
 
-void Community::setStudent(vector<string> s){
-    student = s;
+void Community::setStudent(vector<string> student){
+    this->student = student;
     update();
 }
 
-void Community::setGroupCount(int gc){
-    groupCount = gc;
-    update();
+void Community::setGroupCount(int groupCount){
+    this->groupCount = groupCount;
 }
 
-void Community::setGroupEntityCount(int gec){
-    groupEntityCount = gec;
-    update();
+void Community::setGroupEntityCount(int groupEntityCount){
+    this->groupEntityCount = groupEntityCount;
 }
 
 vector<string> Community::getStudent(){
