@@ -13,9 +13,6 @@ VEDA_Lunch_Lottery는 그룹 내에서 무작위로 식사 조를 만들어주�
 
 - 무작위 조 편성: 매주 새로운 조합의 식사 그룹 생성
 
-[//]: # (- 유연한 설정: 그룹 크기와 총 그룹 수 조정 가능)
-[//]: # (- 공정한 분배: 모든 참가자가 고르게 다양한 그룹에 배정되도록 보장)
-
 ## 사용 방법
 
 
@@ -25,15 +22,13 @@ VEDA_Lunch_Lottery는 그룹 내에서 무작위로 식사 조를 만들어주�
 project_root/
 ├── main.cpp
 ├── include/
-│   ├── 
-│   ├── 
-│   └── 
+│   ├── community.h
+│   ├── imagewidget.h
+│   └── mainwidget.h
 ├── src/
-│   ├── 
-│   ├── 
-│   └── 
+│   ├── community.cpp
+│   ├── imagewidget.cpp
+│   └── mainwidget.cpp
 └── ui/
-    ├── 
-    ├── 
-    └── 
+    └── mainwidget.ui 
 ```
