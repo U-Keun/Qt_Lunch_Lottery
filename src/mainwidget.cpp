@@ -12,6 +12,7 @@
 #include <QMessageBox>
 #include <QIcon>
 #include <QTimer>
+#include <QValidator>
 
 #include <QFileDialog>
 #include <QTextStream>
@@ -29,6 +30,7 @@ MainWidget::MainWidget(QWidget *parent)
 {
     ui->setupUi(this);
     community = new Community();
+    cat = new ImageWidget(ui->inputWidget);
     connect(ui->chooseFileButton, &QPushButton::clicked, this, [=]() {
         QString fileName = QFileDialog::getOpenFileName(this,
                                                         tr("학생 데이터 파일 선택"), "",
@@ -114,12 +116,8 @@ MainWidget::MainWidget(QWidget *parent)
         updateTotalPeopleCount();
         updateCommunity();
     });
-
-    cat = new ImageWidget(ui->inputWidget);
-    cat->setGeometry(10, 430, 400, 200);
-    ui->inputWidget->raise();
-    cat->raise();
-    ui->generateGroupButton->raise();
+    QIntValidator *validator = new QIntValidator(1, 99, this);
+    ui->groupCountLineEdit->setValidator(validator);
 }
 
 MainWidget::~MainWidget()
@@ -202,3 +200,13 @@ QStringList MainWidget::getNames() {
     return names;
 }
 
+void MainWidget::updateCatPosition() {
+    if (cat) {
+        cat->setGeometry(5, height() - 175, 250, 160);
+    }
+}
+
+void MainWidget::resizeEvent(QResizeEvent* event) {
+    QWidget::resizeEvent(event);
+    updateCatPosition();
+}

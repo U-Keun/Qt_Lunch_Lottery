@@ -22,6 +22,9 @@ public:
     explicit MainWidget(QWidget *parent = nullptr);
     ~MainWidget();
 
+protected:
+    void resizeEvent(QResizeEvent* event) override;
+
 private:
     Ui::MainWidget *ui;
     Community* community;
@@ -39,6 +42,7 @@ private:
     QStringList getNames();
 
     ImageWidget *cat;
+    void updateCatPosition();
 
 };
 
