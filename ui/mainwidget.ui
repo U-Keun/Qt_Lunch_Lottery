@@ -92,6 +92,10 @@
               <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: black;
+</string>
+            </property>
             <property name="text">
              <string>RANBAB</string>
             </property>
@@ -104,6 +108,10 @@
               <family>나눔고딕</family>
               <pointsize>12</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: black;
+</string>
             </property>
             <property name="text">
              <string>그룹 수</string>
@@ -126,10 +134,12 @@
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
-border-color: rgb(198, 201, 207);
+border: 1px solid gray;
 outline: none;
 border-radius: 4px;
-padding: 3px;</string>
+padding: 3px;
+color: black;
+</string>
             </property>
             <property name="inputMask">
              <string>00</string>
@@ -154,11 +164,39 @@ padding: 3px;</string>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-border-color: rgb(198, 201, 207);
+             <string notr="true">QTextEdit {
+background-color: rgb(255, 255, 255);
 outline: none;
 border-radius: 4px;
-padding: 3px;</string>
+padding: 3px;
+color: black;
+border: 1px solid gray;
+}
+QScrollBar:vertical {
+background-color: rgb(255, 255, 255);
+border: none;
+width: 10px;
+}
+QScrollBar::handle:vertical {
+background-color: rgb(198, 201, 207);
+border: none;
+border-radius: 4px;
+}
+QScrollBar::handle:vertical:hover {
+background-color: rgb(188, 191, 197);
+}
+QScrollBar::handle:vertical:pressed {
+background-color: rgb(178, 181, 187);
+}
+QScrollBar::sub-line, QScrollBar::add-line {
+height: 0px;
+width: 0px;
+border: none;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+background: transparent;
+border: none;
+}</string>
             </property>
            </widget>
           </item>
@@ -206,6 +244,9 @@ QPushButton:pressed {
               <family>나눔고딕</family>
               <pointsize>14</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
              <string>총 인원 : 0명</string>
@@ -298,6 +339,10 @@ background-color: rgb(0, 149, 225);
            <bold>true</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color: black;
+</string>
+         </property>
          <property name="text">
           <string>랜덤 조 편성</string>
          </property>
@@ -313,6 +358,10 @@ background-color: rgb(0, 149, 225);
              <pointsize>16</pointsize>
              <bold>true</bold>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: black;
+</string>
            </property>
            <property name="text">
             <string>결과</string>
@@ -349,7 +398,7 @@ background-color: rgb(0, 149, 225);
 }
 
 QPushButton:hover {
-	background-color: rgb(245, 245, 245);
+	background-color: rgb(235, 235, 235);
 	color: black;
 }
 </string>
@@ -396,6 +445,33 @@ QPushButton:hover {
           </property>
           <item>
            <widget class="QScrollArea" name="scrollArea">
+            <property name="styleSheet">
+             <string notr="true">QScrollBar:vertical {
+background-color: rgb(255, 255, 255);
+border: none;
+width: 10px;
+}
+QScrollBar::handle:vertical {
+background-color: rgb(198, 201, 207);
+border: none;
+border-radius: 4px;
+}
+QScrollBar::handle:vertical:hover {
+background-color: rgb(188, 191, 197);
+}
+QScrollBar::handle:vertical:pressed {
+background-color: rgb(178, 181, 187);
+}
+QScrollBar::sub-line, QScrollBar::add-line {
+height: 0px;
+width: 0px;
+border: none;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+background: transparent;
+border: none;
+}</string>
+            </property>
             <property name="frameShape">
              <enum>QFrame::Shape::NoFrame</enum>
             </property>
@@ -410,6 +486,9 @@ QPushButton:hover {
                <width>542</width>
                <height>447</height>
               </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
               <property name="spacing">
@@ -429,6 +508,9 @@ QPushButton:hover {
               </property>
               <item>
                <widget class="QFrame" name="frame">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::Shape::NoFrame</enum>
                 </property>

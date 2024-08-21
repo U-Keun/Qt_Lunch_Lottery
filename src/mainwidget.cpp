@@ -120,6 +120,7 @@ MainWidget::MainWidget(QWidget *parent)
     ui->inputWidget->raise();
     cat->raise();
     ui->generateGroupButton->raise();
+
 }
 
 MainWidget::~MainWidget()
@@ -180,7 +181,12 @@ void MainWidget::displayResult() {
             member += QString::fromStdString(team[i][j]) + tr(" ");
         }
         label->setText(member);
-        label->setStyleSheet("QLabel {font-size: 14pt;}");
+        label->setStyleSheet("QLabel {"
+                             "font-size: 14pt; "
+                             "color: black; "
+                             "background-color: rgb(247, 248, 249);"
+                             "border: 1px solid gray;"
+                             "border-radius: 4px;}");
         label->setMargin(12);
         label->setTextInteractionFlags(Qt::TextBrowserInteraction);
 
