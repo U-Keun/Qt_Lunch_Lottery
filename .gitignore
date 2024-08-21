@@ -67,7 +67,6 @@ cmake-build-*/
 Makefile*
 *.moc
 *.rcc
-*.qrc
 *.qmlc
 *.qmltypes
 *.qsb

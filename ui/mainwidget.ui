@@ -12,11 +12,14 @@
   </property>
   <property name="font">
    <font>
-    <family>Arial</family>
+    <family>나눔고딕</family>
    </font>
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
    <property name="spacing">
@@ -40,152 +43,281 @@
       <number>0</number>
      </property>
      <item>
-      <layout class="QVBoxLayout" name="inputLayout" stretch="0,0,0,0,0,0,1,0">
-       <property name="spacing">
-        <number>8</number>
+      <widget class="QWidget" name="inputWidget" native="true">
+       <property name="autoFillBackground">
+        <bool>false</bool>
        </property>
-       <property name="leftMargin">
-        <number>10</number>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(198, 201, 207)</string>
        </property>
-       <property name="topMargin">
-        <number>20</number>
-       </property>
-       <property name="rightMargin">
-        <number>10</number>
-       </property>
-       <property name="bottomMargin">
-        <number>20</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="programNameLabel">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>20</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>RANBAB</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="groupEntryCountLabel">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>조 인원</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="groupEntryCountLineEdit">
-         <property name="maximumSize">
-          <size>
-           <width>196</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="placeholderText">
-          <string>test</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QTextEdit" name="groupEntryText">
-         <property name="maximumSize">
-          <size>
-           <width>196</width>
-           <height>199</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="chooseFileButton">
-         <property name="maximumSize">
-          <size>
-           <width>196</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>파일 선택</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="totalPeopleCountLabel">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>총 인원 : -명</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="catImageLabel">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="generateGroupButton">
-         <property name="minimumSize">
-          <size>
-           <width>196</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>196</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>생성하기</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QVBoxLayout" name="inputLayout" stretch="0,0,0,0,0,0,1,0">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="programNameLabel">
+            <property name="font">
+             <font>
+              <family>나눔고딕</family>
+              <pointsize>20</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: black;
+</string>
+            </property>
+            <property name="text">
+             <string>RANBAB</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="groupCountLabel">
+            <property name="font">
+             <font>
+              <family>나눔고딕</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: black;
+</string>
+            </property>
+            <property name="text">
+             <string>그룹 수</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="groupCountLineEdit">
+            <property name="maximumSize">
+             <size>
+              <width>196</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>나눔고딕</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid gray;
+outline: none;
+border-radius: 4px;
+padding: 3px;
+color: black;
+</string>
+            </property>
+            <property name="inputMask">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="groupEntryText">
+            <property name="maximumSize">
+             <size>
+              <width>196</width>
+              <height>199</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>나눔고딕</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QTextEdit {
+background-color: rgb(255, 255, 255);
+outline: none;
+border-radius: 4px;
+padding: 3px;
+color: black;
+border: 1px solid gray;
+}
+QScrollBar:vertical {
+background-color: rgb(255, 255, 255);
+border: none;
+width: 10px;
+}
+QScrollBar::handle:vertical {
+background-color: rgb(198, 201, 207);
+border: none;
+border-radius: 4px;
+}
+QScrollBar::handle:vertical:hover {
+background-color: rgb(188, 191, 197);
+}
+QScrollBar::handle:vertical:pressed {
+background-color: rgb(178, 181, 187);
+}
+QScrollBar::sub-line, QScrollBar::add-line {
+height: 0px;
+width: 0px;
+border: none;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+background: transparent;
+border: none;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="chooseFileButton">
+            <property name="maximumSize">
+             <size>
+              <width>196</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>나눔고딕</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+background-color: rgb(116, 136, 146);
+border: none;
+padding: 5px;
+outline: none;
+color: white;
+border-radius: 4px;
+}
+
+QPushButton:hover {
+	background-color: rgb(106, 126, 136);
+}
+
+QPushButton:pressed {
+	background-color: rgb(96, 116, 126);
+}</string>
+            </property>
+            <property name="text">
+             <string>파일 선택</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="totalPeopleCountLabel">
+            <property name="font">
+             <font>
+              <family>나눔고딕</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(0, 0, 0);</string>
+            </property>
+            <property name="text">
+             <string>총 인원 : 0명</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="catImageLabel">
+            <property name="font">
+             <font>
+              <family>나눔고딕</family>
+             </font>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="generateGroupButton">
+            <property name="minimumSize">
+             <size>
+              <width>196</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>196</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>나눔고딕</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+background-color: rgb(4, 169, 245);
+border: none;
+padding: 5px;
+color: white;
+outline: none;
+border-radius: 4px;
+}
+
+QPushButton:hover {
+background-color: rgb(0, 159, 235);
+}
+
+QPushButton:pressed {
+background-color: rgb(0, 149, 225);
+}</string>
+            </property>
+            <property name="text">
+             <string>생성하기</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </item>
      <item>
       <layout class="QVBoxLayout" name="outputLayout" stretch="0,0,1,0">
+       <property name="spacing">
+        <number>8</number>
+       </property>
        <property name="leftMargin">
         <number>20</number>
        </property>
@@ -202,10 +334,14 @@
         <widget class="QLabel" name="titleLabel">
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>나눔고딕</family>
            <pointsize>20</pointsize>
            <bold>true</bold>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: black;
+</string>
          </property>
          <property name="text">
           <string>랜덤 조 편성</string>
@@ -218,10 +354,14 @@
           <widget class="QLabel" name="resultLabel">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>나눔고딕</family>
              <pointsize>16</pointsize>
              <bold>true</bold>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: black;
+</string>
            </property>
            <property name="text">
             <string>결과</string>
@@ -232,18 +372,49 @@
           <widget class="QPushButton" name="copyButton">
            <property name="minimumSize">
             <size>
-             <width>20</width>
-             <height>20</height>
+             <width>32</width>
+             <height>32</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>나눔고딕</family>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>ArrowCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	border: none;
+	border-radius: 4px;
+	padding: 2px;
+}
+
+QPushButton:hover {
+	background-color: rgb(235, 235, 235);
+	color: black;
+}
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/resource/copy-icon.svg</normaloff>:/resource/copy-icon.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
              <width>20</width>
              <height>20</height>
             </size>
-           </property>
-           <property name="text">
-            <string>PushButton</string>
            </property>
           </widget>
          </item>
@@ -251,7 +422,15 @@
        </item>
        <item>
         <widget class="QWidget" name="resultWidget" native="true">
+         <property name="font">
+          <font>
+           <family>나눔고딕</family>
+          </font>
+         </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
           <property name="leftMargin">
            <number>0</number>
           </property>
@@ -265,7 +444,120 @@
            <number>0</number>
           </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_3"/>
+           <widget class="QScrollArea" name="scrollArea">
+            <property name="styleSheet">
+             <string notr="true">QScrollBar:vertical {
+background-color: rgb(255, 255, 255);
+border: none;
+width: 10px;
+}
+QScrollBar::handle:vertical {
+background-color: rgb(198, 201, 207);
+border: none;
+border-radius: 4px;
+}
+QScrollBar::handle:vertical:hover {
+background-color: rgb(188, 191, 197);
+}
+QScrollBar::handle:vertical:pressed {
+background-color: rgb(178, 181, 187);
+}
+QScrollBar::sub-line, QScrollBar::add-line {
+height: 0px;
+width: 0px;
+border: none;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+background: transparent;
+border: none;
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::NoFrame</enum>
+            </property>
+            <property name="widgetResizable">
+             <bool>true</bool>
+            </property>
+            <widget class="QWidget" name="scrollAreaWidgetContents">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>542</width>
+               <height>447</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="frame">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Plain</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_3">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -286,9 +578,27 @@
          </property>
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>나눔고딕</family>
            <pointsize>14</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+background-color: rgb(4, 169, 245);
+border: none;
+padding: 5px;
+color: white;
+outline: none;
+border-radius: 4px;
+}
+
+QPushButton:hover {
+background-color: rgb(0, 159, 235);
+}
+
+QPushButton:pressed {
+background-color: rgb(0, 149, 225);
+}</string>
          </property>
          <property name="text">
           <string>저장</string>
