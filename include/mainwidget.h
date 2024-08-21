@@ -24,6 +24,7 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
+    bool eventFilter(QObject*, QEvent*) override;
 
 private:
     Ui::MainWidget *ui;

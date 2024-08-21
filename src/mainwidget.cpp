@@ -12,12 +12,13 @@
 #include <QMessageBox>
 #include <QIcon>
 #include <QTimer>
-#include <QValidator>
+#include <QIntValidator>
 
 #include <QFileDialog>
 #include <QTextStream>
 #include <QStringList>
 #include <QClipboard>
+#include <QEvent>
 
 #include <vector>
 #include <string>
@@ -118,6 +119,15 @@ MainWidget::MainWidget(QWidget *parent)
     });
     QIntValidator *validator = new QIntValidator(1, 99, this);
     ui->groupCountLineEdit->setValidator(validator);
+
+    connect(ui->groupCountLineEdit, &QLineEdit::returnPressed, this, [=]() {
+        cat->setFocus();
+    });
+
+    ui->groupEntryText->installEventFilter(this);
+
+    connect(cat, &ImageWidget::catPunchedButton, ui->generateGroupButton, &QPushButton::click);
+
 }
 
 MainWidget::~MainWidget()
@@ -202,11 +212,20 @@ QStringList MainWidget::getNames() {
 
 void MainWidget::updateCatPosition() {
     if (cat) {
-        cat->setGeometry(5, height() - 175, 250, 160);
+        cat->setGeometry(0, height() - 175, 250, 160);
     }
 }
 
 void MainWidget::resizeEvent(QResizeEvent* event) {
     QWidget::resizeEvent(event);
     updateCatPosition();
+}
+
+bool MainWidget::eventFilter(QObject* obj, QEvent* event) {
+    if (obj == ui->groupEntryText) {
+        if (event->type() == QEvent::FocusOut) {
+            cat->setFocus();
+        }
+    }
+    return QWidget::eventFilter(obj, event);
 }

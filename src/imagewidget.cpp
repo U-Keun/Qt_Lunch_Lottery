@@ -30,9 +30,14 @@ ImageWidget::ImageWidget(QWidget *parent)
     
     clickBox = QRect(0, 0, 200, 120);
 
+    setFocusPolicy(Qt::StrongFocus);
+    setFocus();
+
     resetTimer = new QTimer(this);
     resetTimer->setSingleShot(true);
     connect(resetTimer, &QTimer::timeout, this, &ImageWidget::resetScreen);
+
+    setAttribute(Qt::WA_TransparentForMouseEvents, true);
 }
 
 void ImageWidget::paintEvent(QPaintEvent *event) {
@@ -61,12 +66,10 @@ void ImageWidget::paintEvent(QPaintEvent *event) {
     }
 }
 
-void ImageWidget::mousePressEvent(QMouseEvent *event) {
-    QPoint clickPos = event->pos();
+void ImageWidget::keyPressEvent(QKeyEvent *event) {
+    std::uniform_int_distribution<int> distribution(1, 3);
 
-    std::uniform_int_distribution<int> distribution(1,3);
-
-    if (clickBox.contains(clickPos)) {
+    if (event->key() == Qt::Key_Space) {
         pawState = distribution(generator);
         update();
 
@@ -76,8 +79,12 @@ void ImageWidget::mousePressEvent(QMouseEvent *event) {
 
         resetTimer->start(300);
 
-        if (pawState == 1 || pawState == 3) emit catPunchedButton();
+        if (pawState == 1 || pawState == 3) {
+            emit catPunchedButton();
+        }
     }
+
+    QWidget::keyPressEvent(event);
 }
 
 void ImageWidget::resetScreen() {

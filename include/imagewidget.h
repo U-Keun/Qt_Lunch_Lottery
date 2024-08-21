@@ -29,7 +29,7 @@ public:
 
 protected:
     void paintEvent(QPaintEvent*) override;
-    void mousePressEvent(QMouseEvent *event) override;
+    void keyPressEvent(QKeyEvent*) override;
 };
 
 #endif // IMAGEWIDGET_H
