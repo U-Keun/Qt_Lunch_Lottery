@@ -116,11 +116,10 @@ MainWidget::MainWidget(QWidget *parent)
     });
 
     cat = new ImageWidget(ui->inputWidget);
-    cat->setGeometry(10, 450, 400, 200);
+    cat->setGeometry(10, 430, 400, 200);
     ui->inputWidget->raise();
     cat->raise();
     ui->generateGroupButton->raise();
-
 }
 
 MainWidget::~MainWidget()
