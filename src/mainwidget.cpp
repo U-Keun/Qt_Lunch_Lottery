@@ -107,7 +107,7 @@ MainWidget::MainWidget(QWidget *parent)
     });
 
     cat = new ImageWidget(this);
-    cat->setGeometry(10, 450, 400, 200);
+    cat->setGeometry(10, 430, 400, 200);
 
 
 }

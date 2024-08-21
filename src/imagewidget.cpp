@@ -6,7 +6,7 @@
 
 ImageWidget::ImageWidget(QWidget *parent)
     : QWidget(parent), pawState(0), generator(std::random_device{}()) {
-    QPixmap originalCat = QPixmap(":/resource/cat.png");
+    QPixmap originalCat = QPixmap(":/resource/animal.png");
     QPixmap originalMouth = QPixmap(":/resource/mouth.png");
     QPixmap originalLeftPaw = QPixmap(":/resource/paw-left.png");
     QPixmap originalRightPaw = QPixmap(":/resource/paw-right.png");
@@ -28,7 +28,7 @@ ImageWidget::ImageWidget(QWidget *parent)
     leftPawDown = originalLeftPaw.copy(imageWidth, 0, imageWidth, imageHeight).scaled(imageWidth * scaleFactor, imageHeight * scaleFactor, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     rightPawDown = originalRightPaw.copy(imageWidth, 0, imageWidth, imageHeight).scaled(imageWidth * scaleFactor, imageHeight * scaleFactor, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     
-    clickBox = QRect(0, 0, 200, 100);
+    clickBox = QRect(0, 0, 200, 120);
 
     resetTimer = new QTimer(this);
     resetTimer->setSingleShot(true);
@@ -38,25 +38,25 @@ ImageWidget::ImageWidget(QWidget *parent)
 void ImageWidget::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
 
-    painter.drawPixmap(-200, 0, cat);
-    painter.drawPixmap(-200, 0, mouth);
+    painter.drawPixmap(-200, -266, cat);
+    // painter.drawPixmap(-200, 0, mouth);
 
     switch (pawState) {
     case 0:
-        painter.drawPixmap(-200, 0, leftPawUp);
-        painter.drawPixmap(-200, 0, rightPawUp);
+        painter.drawPixmap(-198, 6, leftPawUp);
+        painter.drawPixmap(-190, 4, rightPawUp);
         break;
     case 1:
-        painter.drawPixmap(-200, 0, leftPawDown);
-        painter.drawPixmap(-200, 0, rightPawUp);
+        painter.drawPixmap(-198, 6, leftPawDown);
+        painter.drawPixmap(-190, 4, rightPawUp);
         break;
     case 2:
-        painter.drawPixmap(-200, 0, leftPawUp);
-        painter.drawPixmap(-200, 0, rightPawDown);
+        painter.drawPixmap(-198, 6, leftPawUp);
+        painter.drawPixmap(-190, 4, rightPawDown);
         break;
     case 3:
-        painter.drawPixmap(-200, 0, leftPawDown);
-        painter.drawPixmap(-200, 0, rightPawDown);
+        painter.drawPixmap(-198, 6, leftPawDown);
+        painter.drawPixmap(-190, 4, rightPawDown);
         break;
     }
 }
@@ -74,7 +74,7 @@ void ImageWidget::mousePressEvent(QMouseEvent *event) {
             resetTimer->stop();
         }
 
-        resetTimer->start(400);
+        resetTimer->start(300);
 
         if (pawState == 1 || pawState == 3) emit catPunchedButton();
     }
