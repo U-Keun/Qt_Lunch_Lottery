@@ -142,7 +142,7 @@ color: black;
 </string>
             </property>
             <property name="inputMask">
-             <string>00</string>
+             <string/>
             </property>
             <property name="placeholderText">
              <string/>
@@ -407,7 +407,7 @@ QPushButton:hover {
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../images.qrc">
+            <iconset>
              <normaloff>:/resource/copy-icon.svg</normaloff>:/resource/copy-icon.svg</iconset>
            </property>
            <property name="iconSize">
@@ -611,8 +611,6 @@ background-color: rgb(0, 149, 225);
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
