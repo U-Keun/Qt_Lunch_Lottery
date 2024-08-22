@@ -13,6 +13,7 @@
 #include <QIcon>
 #include <QTimer>
 #include <QIntValidator>
+#include <QApplication>
 
 #include <QFileDialog>
 #include <QTextStream>
@@ -32,6 +33,9 @@ MainWidget::MainWidget(QWidget *parent)
     ui->setupUi(this);
     community = new Community();
     cat = new ImageWidget(ui->inputWidget);
+
+    qApp->installEventFilter(this); // cat->sefFocus의 우선순위를 최우선으로 설정
+
     connect(ui->chooseFileButton, &QPushButton::clicked, this, [=]() {
         QString fileName = QFileDialog::getOpenFileName(this,
                                                         tr("학생 데이터 파일 선택"), "",
@@ -120,11 +124,10 @@ MainWidget::MainWidget(QWidget *parent)
     QIntValidator *validator = new QIntValidator(1, 99, this);
     ui->groupCountLineEdit->setValidator(validator);
 
+    // 키보드 입력에 대한 focus 전환의 경우 text위젯에 대해서는 예외처리를 했으니까 이건 필요
     connect(ui->groupCountLineEdit, &QLineEdit::returnPressed, this, [=]() {
         cat->setFocus();
     });
-
-    ui->groupEntryText->installEventFilter(this);
 
     connect(cat, &ImageWidget::catPunchedButton, ui->generateGroupButton, &QPushButton::click);
 
@@ -222,10 +225,17 @@ void MainWidget::resizeEvent(QResizeEvent* event) {
 }
 
 bool MainWidget::eventFilter(QObject* obj, QEvent* event) {
-    if (obj == ui->groupEntryText) {
+    // text 위젯에 대해서는 focus를 잃어야 이미지로 focus가 전환되도록 설정
+    if (obj == ui->groupCountLineEdit || obj == ui->groupEntryText) {
         if (event->type() == QEvent::FocusOut) {
             cat->setFocus();
         }
     }
+    // 나머지 위젯(버튼들)에 대해서는 마우스 및 키보드 클릭 이후에는 이미지로 focus가 전환되도록 설정
+    // 근데 1번째 if문에서 text 위젯에 대해 설정했으면 else if 문에서는 생략해도 되지 않나? 왜 안되지...?
+    else if ((!ui->groupCountLineEdit->hasFocus() && !ui->groupEntryText->hasFocus()) && (event->type() == QEvent::MouseButtonPress || event->type() == QEvent::KeyPress)) {
+        cat->setFocus();
+    }
+
     return QWidget::eventFilter(obj, event);
 }
