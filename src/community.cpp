@@ -31,11 +31,7 @@ void Community::setGroupEntityCount(int groupEntityCount){
     this->groupEntityCount = groupEntityCount;
 }
 
-vector<string> Community::getStudent(){
-    return student;
-}
-
-vector<vector<string>> Community::getTeam(){
+vector<vector<string>> Community::getTeam() const {
     return team;
 }
 
@@ -54,7 +50,6 @@ void Community::shuffle() {
         for (int i = 0; i < team.size(); i++) {
             for (int j = 0; j < team[0].size(); j++) {
                 newnewTeam[i][(j + (i + 1)) % mod] = newTeam[i][j];
-
             }
         }
         team = newnewTeam;
