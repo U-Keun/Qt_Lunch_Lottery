@@ -90,6 +90,7 @@ MainWidget::MainWidget(QWidget *parent)
                 if (team[i][j] == "none") continue;
                 copyStr += QString::fromStdString(team[i][j]) + tr(", ");
             }
+            copyStr.chop(2);
             copyStr += "\n";
         }
         QClipboard* clipboard = QApplication::clipboard();
