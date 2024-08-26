@@ -104,6 +104,14 @@ MainWidget::MainWidget(QWidget *parent)
     });
 
     connect(ui->generateGroupButton, &QPushButton::clicked, this, [=]() {
+        if (ui->groupCountLineEdit->text() == "") {
+            QMessageBox::warning(this, "경고", "그룹 수를 입력해주세요.");
+            return;
+        }
+        if (ui->groupCountLineEdit->text().toInt() == 0) {
+            QMessageBox::warning(this, "경고", "그룹 수는 1이상 입니다.");
+            return;
+        }
         QStringList names = getNames();
         if (names.empty()) return;
         community->shuffle();
@@ -147,18 +155,11 @@ void MainWidget::updateTotalPeopleCount() {
 
 void MainWidget::updateCommunity() {
     QString groupCountTemp = ui->groupCountLineEdit->text();
-    if (groupCountTemp == "") {
-        // 안내 창 띄우기
-        QMessageBox::warning(this, "경고", "그룹 수를 입력해주세요.");
-        return;
-    }
+    if (groupCountTemp == "") return;
     QStringList names = getNames();
     totalPeopleCount = names.size();
-    groupCount = ui->groupCountLineEdit->text().toInt();
-    if (groupCount == 0) {
-        QMessageBox::warning(this, "경고", "그룹 수는 1이상 입니다.");
-        return;
-    }
+    groupCount = groupCountTemp.toInt();
+    if (groupCount == 0) return;
     groupEntityCount = ((totalPeopleCount - 1) / groupCount) + 1;
     vector<string> students;
     for (int i = 0; i < names.size(); i++) {
