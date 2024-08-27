@@ -47,19 +47,15 @@ void Community::shuffle() {
             newTeam[(i + (j + 1)) % mod][j] = team[i][j];
         }
     }
+    team = newTeam;
 
     if (count % (team.size() - 1) == team.size() - 2) {
-        vector<vector<string>> newnewTeam = newTeam;
         mod = team[0].size();
         for (int i = 0; i < team.size(); i++) {
             for (int j = 0; j < team[0].size(); j++) {
-                newnewTeam[i][(j + (i + 1)) % mod] = newTeam[i][j];
-
+                newTeam[i][(j + (i + 1)) % mod] = team[i][j];
             }
         }
-        team = newnewTeam;
-    }
-    else {
         team = newTeam;
     }
 
