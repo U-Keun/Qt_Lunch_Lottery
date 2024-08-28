@@ -13,6 +13,7 @@ class Community {
     int groupEntityCount;			// 열
     int count;                      // 랜밥 셔플 카운트
 
+    bool isValidTeam();
 public:
     Community();
     Community(vector<string> student, int groupCount, int groupEntityCount, int count);
