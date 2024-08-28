@@ -39,25 +39,41 @@ vector<vector<string>> Community::getTeam(){
     return team;
 }
 
+bool Community::isValidTeam() {
+    int standard = team[0].size() / 2;
+    for (const auto& row : team) {
+        int count = 0;
+        for (string name : row) {
+            if (name == "none") count++;
+        }
+
+        if (count > standard) return false;
+    }
+
+    return true;
+}
+
 void Community::shuffle() {
     int mod = team.size();
-    vector<vector<string>> newTeam = team;
-    for (int j = 0; j < team[0].size(); j++) {
-        for (int i = 0; i < team.size(); i++) {
-            newTeam[(i + (j + 1)) % mod][j] = team[i][j];
-        }
-    }
-    team = newTeam;
-
-    if (count % (team.size() - 1) == team.size() - 2) {
-        mod = team[0].size();
-        for (int i = 0; i < team.size(); i++) {
-            for (int j = 0; j < team[0].size(); j++) {
-                newTeam[i][(j + (i + 1)) % mod] = team[i][j];
+    do {
+        vector<vector<string>> newTeam = team;
+        for (int j = 0; j < team[0].size(); j++) {
+            for (int i = 0; i < team.size(); i++) {
+                newTeam[(i + (j + 1)) % mod][j] = team[i][j];
             }
         }
         team = newTeam;
-    }
 
-    count++;
+        if (count % (team.size() - 1) == team.size() - 2) {
+            mod = team[0].size();
+            for (int i = 0; i < team.size(); i++) {
+                for (int j = 0; j < team[0].size(); j++) {
+                    newTeam[i][(j + (i + 1)) % mod] = team[i][j];
+                }
+            }
+            team = newTeam;
+        }
+
+        count++;
+    } while(!isValidTeam());
 }
