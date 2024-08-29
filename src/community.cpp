@@ -31,11 +31,7 @@ void Community::setGroupEntityCount(int groupEntityCount){
     this->groupEntityCount = groupEntityCount;
 }
 
-vector<string> Community::getStudent(){
-    return student;
-}
-
-vector<vector<string>> Community::getTeam(){
+vector<vector<string>> Community::getTeam() const {
     return team;
 }
 
