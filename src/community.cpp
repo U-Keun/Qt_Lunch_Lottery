@@ -1,8 +1,13 @@
+#include <random>
+#include <chrono>
+
 #include "community.h"
 
-Community::Community():Community(vector<string>(), 0, 0, 0){}
-Community::Community(vector<string> student, int groupCount, int groupEntityCount, int count):
-    student(student), groupCount(groupCount), groupEntityCount(groupEntityCount), count(0){
+using namespace std;
+
+Community::Community():Community(vector<string>(), 0, 0){}
+Community::Community(vector<string> student, int groupCount, int groupEntityCount):
+    student(student), groupCount(groupCount), groupEntityCount(groupEntityCount) {
     update();
 }
 Community::~Community(){}
@@ -36,10 +41,10 @@ vector<vector<string>> Community::getTeam() const {
 }
 
 bool Community::isValidTeam() {
-    int standard = team[0].size() / 2;
+    int standard = team[0].size() / 2 - 1;
     for (const auto& row : team) {
         int count = 0;
-        for (string name : row) {
+        for (const string& name : row) {
             if (name == "none") count++;
         }
 
@@ -49,27 +54,27 @@ bool Community::isValidTeam() {
     return true;
 }
 
+mt19937 initialize_random_engine() {
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    return mt19937(seed);
+}
+
+mt19937 g = initialize_random_engine();
+
 void Community::shuffle() {
-    int mod = team.size();
     do {
-        vector<vector<string>> newTeam = team;
-        for (int j = 0; j < team[0].size(); j++) {
-            for (int i = 0; i < team.size(); i++) {
-                newTeam[(i + (j + 1)) % mod][j] = team[i][j];
-            }
-        }
-        team = newTeam;
-
-        if (count % (team.size() - 1) == team.size() - 2) {
-            mod = team[0].size();
-            for (int i = 0; i < team.size(); i++) {
-                for (int j = 0; j < team[0].size(); j++) {
-                    newTeam[i][(j + (i + 1)) % mod] = team[i][j];
-                }
-            }
-            team = newTeam;
+        vector<string> flatTeam;
+        for (const auto& row : team) {
+            flatTeam.insert(flatTeam.end(), row.begin(), row.end());
         }
 
-        count++;
+        std::shuffle(flatTeam.begin(), flatTeam.end(), g);
+
+        int index = 0;
+        for (int i = 0; i < groupCount; i++) {
+            for (int j = 0; j < groupEntityCount; j++) {
+                team[i][j] = flatTeam[index++];
+            }
+        }
     } while(!isValidTeam());
 }
