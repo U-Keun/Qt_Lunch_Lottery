@@ -34,6 +34,8 @@ MainWidget::MainWidget(QWidget *parent)
     community = new Community();
     cat = new ImageWidget(ui->inputWidget);
 
+    this->setWindowTitle("RanBab");
+
     qApp->installEventFilter(this); // cat->sefFocus의 우선순위를 최우선으로 설정
 
     connect(ui->chooseFileButton, &QPushButton::clicked, this, [=]() {
