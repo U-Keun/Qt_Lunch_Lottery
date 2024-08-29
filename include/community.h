@@ -11,12 +11,11 @@ class Community {
     void update();
     int groupCount;
     int groupEntityCount;
-    int count;
 
     bool isValidTeam();
 public:
     Community();
-    Community(vector<string>, int, int, int);
+    Community(vector<string>, int, int);
     ~Community();
 
     void setStudent(vector<string>);
