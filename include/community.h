@@ -13,6 +13,7 @@ class Community {
     int groupEntityCount;
     int count;
 
+    bool isValidTeam();
 public:
     Community();
     Community(vector<string>, int, int, int);
