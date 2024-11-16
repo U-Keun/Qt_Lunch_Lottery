@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
 class Community {
@@ -11,6 +12,7 @@ class Community {
     void update();
     int groupCount;
     int groupEntityCount;
+    unordered_map<string, int> nameToIndex;
 
     bool isValidTeam();
 public:
@@ -24,6 +26,7 @@ public:
     vector<vector<string>> getTeam() const;
 
     void shuffle();
+    double calculateScore(vector<string>&, vector<string>&);
 };
 
 #endif // COMMUNITY_H
